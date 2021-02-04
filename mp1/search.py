@@ -84,7 +84,7 @@ def astar_single(maze):
     frontier: List = []  # empty list with nodes ready for expansion--using heapq to make priority queue
     cost_explored = {}  # a dictionary of the explored objects
     parents = {}
-    endpoint = maze.waypoint[0]
+    endpoint = maze.waypoints[0]
 
     if maze.start in maze.waypoints:
         path.append(maze.start)
@@ -108,16 +108,13 @@ def astar_single(maze):
             path.reverse()  # reverse list so correct order
             return path
 
-        next: List = frontier.pop(1)  # packed together: cost + heuristic, location
-        next_loc: List = current[1]
         neighbors = maze.neighbors(curr_loc[0], curr_loc[1])
-
         for i in neighbors:
             total_steps = cost_explored[curr_loc] + 1  # add one because the step is always 1
-            if not cost_explored.get(i, False) or total_steps < cost_explored[next_loc]:
-                cost_explored[next_loc] = total_steps
-                heur_steps = total_steps + abs(current[0] - endpoint[0]) + abs(current[1] - endpoint[1])
-                frontier.append( heur_steps, i)
+            if not cost_explored.get(i, False) or total_steps < cost_explored[i]:
+                cost_explored[i] = total_steps
+                heur_steps = total_steps + abs(curr_loc[0] - endpoint[0]) + abs(curr_loc[1] - endpoint[1])
+                frontier.append((heur_steps, i))
                 parents[i] = curr_loc
 
     return path

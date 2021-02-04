@@ -88,7 +88,7 @@ class maze:
         try:
             return self[i, j] != self.legend.wall 
         except IndexError:
-            return False
+            return False 
 
     # Returns list of neighboing squares that can be moved to from the given row,col
     def neighbors(self, i, j):

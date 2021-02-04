@@ -156,5 +156,5 @@ if __name__ == "__main__":
         with open('results.json', 'w') as file:
             file.write(json.dumps(results))
     else:
-        pprint.pp(results)
+        pprint.pprint(results)
     

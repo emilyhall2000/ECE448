@@ -182,7 +182,7 @@ if __name__ == "__main__":
     parser.add_argument('path',
                         help = 'path to maze file')
     parser.add_argument('--search', dest = 'search', type = str, default = 'bfs',
-                        choices = ('bfs', 'astar_corner', 'astar', 'fast', 'astar_multi'), 
+                        choices = ('bfs', 'astar_corner', 'astar_single', 'fast', 'astar_multiple'), 
                         help = 'search method')
     parser.add_argument('--scale',  dest = 'scale', type = int, default = 20,
                         help = 'display scale')
